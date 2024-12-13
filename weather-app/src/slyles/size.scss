@@ -1,18 +1,41 @@
-.xs {
-  font-size: 18px !important;
+/* -- constants -- */
+$xs: 18px;
+$sm: 22px;
+$md: 26px;
+$lg: 30px;
+$xl: 34px;
+$xxl: 69px;
+
+/* -- fonts -- */
+.text-xs {
+  font-size: $xs !important;
 }
-.sm {
-  font-size: 22px !important;
+.text-sm {
+  font-size: $sm !important;
 }
-.md {
-  font-size: 26px !important;
+.text-md {
+  font-size: $md !important;
 }
-.lg {
-  font-size: 30px !important;
+.text-lg {
+  font-size: $lg !important;
 }
-.xl {
-  font-size: 34px !important;
+.text-xl {
+  font-size: $xl !important;
 }
-.xxl {
-  font-size: 69px !important;
+.text-xxl {
+  font-size: $xxl !important;
+}
+
+/* -- marging and padding -- */
+.margin-right-xs {
+  margin-right: $xs;
+}
+.margin-right-sm {
+  margin-right: $sm;
+}
+.padding-left-xs {
+  padding-left: $xs;
+}
+.padding-right-sm {
+  padding-right: $sm;
 }
