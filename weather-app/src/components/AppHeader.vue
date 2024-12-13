@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink } from 'vue-router'
 import LanguageSelect from './LanguageSelect.vue';
 
 const pages = [
@@ -41,10 +41,6 @@ watch(group, () => {
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-
-    <v-main style="height: 500px;">
-      <RouterView />
-    </v-main>
   </v-layout>
 </template>
 

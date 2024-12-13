@@ -5,11 +5,21 @@ import AppHeader from './components/AppHeader.vue';
 </script>
 
 <template>
-  <AppHeader />
-  <v-main style="height: 500px;">
-    <RouterView />
-  </v-main>
+  <v-container>
+    <AppHeader />
+
+    <v-layout>
+      <v-main>
+        <RouterView />
+      </v-main>
+    </v-layout>
+
+  </v-container>
 </template>
 
 <style lang="scss" scoped>
+.v-main {
+  height: 500px;
+  margin-top: 60px;
+}
 </style>
