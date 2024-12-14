@@ -1,34 +1,44 @@
 <script setup lang="ts">
-const languages = [
+
+import { ref, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
+const { locale } = useI18n();
+const currentLanguage = ref<string>();
+interface LANGUAGE {
+    id: number,
+    language: string,
+}
+onMounted(() => {
+    const defaultLanguage = localStorage.getItem('currentLanguage') ? localStorage.getItem('currentLanguage')! : 'en';
+    if (defaultLanguage?.length) {
+        currentLanguage.value = defaultLanguage;
+        locale.value = defaultLanguage;
+    }
+});
+const languages: LANGUAGE[] = [
     {
         id: 0,
-        flag: './fr.png',
-        value: 'fr',
+        language: 'fr',
     },
     {
         id: 1,
-        flag: 'en.png',
-        value: 'en',
+        language: 'en',
     },
     {
         id: 2,
-        flag: 'de.png',
-        value: 'de',
+        language: 'de',
     }
 ]
+const getCurrentLanguage = (selectedLanguage: string) => {
+    currentLanguage.value = selectedLanguage;
+    if (currentLanguage.value) {
+        localStorage.setItem("currentLanguage", currentLanguage.value);
+    }
+    locale.value = localStorage.getItem('currentLanguage')!;
+}
 </script>
 
 <template>
-    <v-menu>
-        <template v-slot:activator="{ props }">
-            <v-btn icon="mdi-translate" variant="text" v-bind="props" size="x-large" />
-        </template>
-        <v-list>
-            <v-list-item v-for="lang in languages" :key="lang.id" :value="lang.value">
-                <v-list-item-title>
-                    <v-img :src="lang.flag" width="25" />
-                </v-list-item-title>
-            </v-list-item>
-        </v-list>
-    </v-menu>
+    <v-select :items="languages" item-title="language" item-value="language" v-model="currentLanguage"
+        @update:modelValue="getCurrentLanguage"/>
 </template>
