@@ -20,6 +20,5 @@ import AppHeader from './components/AppHeader.vue';
 <style lang="scss" scoped>
 .v-main {
   height: 500px;
-  margin-top: 60px;
 }
 </style>
